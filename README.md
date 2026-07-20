@@ -35,9 +35,13 @@ python src/01_download_data.py data/raw
 │  ├─ supporting/           인용용 보조 문헌
 │  ├─ classics/             개념 원전
 │  └─ methodology/          논문별 방법론 정리 (MD)
-├─ src/
-│  ├─ 00_session_segments.py   세션 세그먼트 검출·유효 관측시간
-│  └─ 01_download_data.py      Zenodo 다운로드
+├─ src/                     실행 .py (파이프라인)
+│  ├─ 01_download_data.py      Zenodo 다운로드
+│  ├─ 02_extract.py            ZIP → CSV 압축 해제
+│  ├─ 03_session_table.py      세션 세그먼트·유효 관측시간 전수 실측
+│  └─ check_missing.py         컬럼별 결측 전수 스캔
+├─ notebook/                탐색·시각화 .ipynb
+│  └─ TAAS_accident_codex.ipynb  TAAS 사고 크롤러 (RQ6, 마지막 단계)
 └─ outputs/                 그림·표
 ```
 
