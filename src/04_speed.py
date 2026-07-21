@@ -133,6 +133,46 @@ def plot_summary(s: pd.DataFrame, outdir: str = "outputs/speed") -> None:
         plt.close(fig)
 
 
+def plot_validation(sample: str = "data/interim/2022-10-04_A/2022-10-04_A_AM1.csv",
+                    outdir: str = "outputs/speed") -> None:
+    """샘플 1개 파일로 속도 재계산을 검증하는 그림 3장(규칙 근거)을 저장한다.
+    ① 재계산 vs 제공 산점도(일치 확인) ② 속도 프로파일(정지 구간 채움) ③ 평활 효과."""
+    os.makedirs(outdir, exist_ok=True)
+    df = pd.read_csv(sample, usecols=["Vehicle_ID", "Local_Time", "Local_X", "Local_Y", "Vehicle_Speed"],
+                     low_memory=False)
+    df["sp"] = pd.to_numeric(df["Vehicle_Speed"], errors="coerce")
+    df = add_kinematics(df)                                   # speed_kmh·speed_smooth 추가
+    g = df.groupby("Vehicle_ID").agg(n=("sp", "size"), spmed=("sp", "median")).query("n>300 and spmed>25")
+    vid = g.sort_values("n", ascending=False).index[0]
+    v = df[df["Vehicle_ID"] == vid].sort_values("t").reset_index(drop=True)
+
+    comp = v.dropna(subset=["speed_kmh", "sp"])
+    r = comp["speed_kmh"].corr(comp["sp"])
+    fig, ax = plt.subplots(figsize=(5, 5))
+    ax.scatter(comp["sp"], comp["speed_kmh"], s=6, alpha=0.3, color="#4C78A8")
+    lim = [0, max(comp["sp"].max(), comp["speed_kmh"].max())]
+    ax.plot(lim, lim, "r--", lw=1, label="y=x")
+    ax.set_xlabel("제공 속도 (km/h)"); ax.set_ylabel("재계산 속도 (km/h)")
+    ax.set_title(f"재계산 vs 제공 — r={r:.3f} (일치)"); ax.legend()
+    fig.tight_layout(); fig.savefig(os.path.join(outdir, "speed_recompute_vs_provided.png"), dpi=120); plt.close(fig)
+
+    t0 = v["t"].iloc[0]
+    fig, ax = plt.subplots(figsize=(10, 4))
+    ax.plot(v["t"] - t0, v["speed_kmh"], color="#4C78A8", lw=0.9, label="재계산(Local)")
+    ax.plot(v["t"] - t0, v["sp"], color="crimson", lw=1.3, label="제공(정지 구간 NaN)")
+    ax.set_xlabel("시간 (초)"); ax.set_ylabel("속도 (km/h)")
+    ax.set_title(f"차량 {vid} 속도 프로파일 — 재계산이 정지 구간을 채움"); ax.legend()
+    fig.tight_layout(); fig.savefig(os.path.join(outdir, "speed_profile.png"), dpi=120); plt.close(fig)
+
+    w2 = v.iloc[100:400]
+    fig, ax = plt.subplots(figsize=(10, 4))
+    ax.plot(w2["t"] - w2["t"].iloc[0], w2["speed_kmh"], color="#bbbbbb", lw=0.8, label="원시")
+    ax.plot(w2["t"] - w2["t"].iloc[0], w2["speed_smooth"], color="#4C78A8", lw=1.6, label="평활(11프레임 중앙)")
+    ax.set_xlabel("시간 (초)"); ax.set_ylabel("속도 (km/h)")
+    ax.set_title(f"평활 효과 — 원시 std {v.speed_kmh.std():.1f} → 평활 {v.speed_smooth.std():.1f}"); ax.legend()
+    fig.tight_layout(); fig.savefig(os.path.join(outdir, "speed_smoothing.png"), dpi=120); plt.close(fig)
+
+
 def main() -> None:
     src = sys.argv[1] if len(sys.argv) > 1 else "data/interim"
     out = sys.argv[2] if len(sys.argv) > 2 else "data/processed"
@@ -157,7 +197,8 @@ def main() -> None:
           f"범위 {s.moving_median_kmh.min():.0f}~{s.moving_median_kmh.max():.0f}")
     print(f"정지 프레임 비율: 중앙 {s.stopped_pct.median():.1f}%")
     print(f"저장: {out}/speed_summary.csv")
-    plot_summary(s)
+    plot_summary(s)         # 분포 그림 (전 세션)
+    plot_validation()       # 검증 그림 (샘플 1개)
     print("그림 저장: outputs/speed/")
 
 
@@ -167,6 +208,7 @@ if __name__ == "__main__":
         # 800개 재실행 없이 speed_summary.csv로 그림만 다시 저장
         s = pd.read_csv("data/processed/speed_summary.csv")
         plot_summary(s)
+        plot_validation()
         print("그림 저장: outputs/speed/")
     else:
         main()
