@@ -1,4 +1,4 @@
-# 다수 교차로에서 TTC·PET 임계값의 전이 가능성 분석
+# 다수 교차로에서 TTC·PET 상충 임계값의 공간적 전이성 분석
 
 인천 송도 20개 교차로의 드론 차량궤적(Songdo Traffic)으로, **한 곳에서 정한 상충 판정 임계값을 다른 교차로와 다른 날짜에 가져다 써도 같은 판정을 만드는지**를 검증한다. 나아가 임계값이 가려낸 위험 교차로가 실제 사고가 많았던 교차로와 일치하는지를 사고이력 자료(TAAS)로 확인한다.
 
@@ -27,27 +27,31 @@ python src/01_download_data.py data/raw
 ## 폴더 구조
 ```text
 ├─ data/                    (git 제외)
-│  ├─ raw/                  Zenodo 원본 ZIP
-│  ├─ interim/              압축 해제 CSV
-│  └─ processed/            상충 사건테이블 등
+│  ├─ raw/                  Zenodo 원본 ZIP (정사영상·segmentation 포함)
+│  ├─ interim/              압축 해제 세션 CSV (800개)
+│  ├─ segmentations/        차로·도로 폴리곤 CSV (교차로별)
+│  └─ processed/            세션표·속도·이동류·상충 사건테이블
 ├─ references/              (PDF는 git 제외)
 │  ├─ core_papers/          메인 논문 3편 + 데이터 설명서
 │  ├─ supporting/           인용용 보조 문헌
 │  ├─ classics/             개념 원전
 │  └─ methodology/          논문별 방법론 정리 (MD)
-├─ src/                     실행 .py (파이프라인)
+├─ src/                     실행 .py (파이프라인 — 그림도 py가 outputs/에 저장)
 │  ├─ 01_download_data.py      Zenodo 다운로드
 │  ├─ 02_extract.py            ZIP → CSV 압축 해제
 │  ├─ 03_session_table.py      세션 세그먼트·유효 관측시간 전수 실측
+│  ├─ 04_speed.py              속도·방향 재계산 (Local 좌표, 검증 r=0.99)
+│  ├─ 05_movement.py           이동류 분류 (진입·진출 접근로) + 정지차량
+│  ├─ 06_conflicts.py          TTC·PET 상충 사건표 (TRIP 3단계)
 │  └─ check_missing.py         컬럼별 결측 전수 스캔
-├─ notebook/                탐색·시각화 .ipynb
+├─ notebook/
 │  └─ TAAS_accident_codex.ipynb  TAAS 사고 크롤러 (RQ6, 마지막 단계)
-└─ outputs/                 그림·표
+└─ outputs/                 그림 (speed/ movement/ conflicts/ sites/ — 검증_/분포_ 구분)
 ```
 
 ## 핵심 설계
 - TTC는 추종 상충 전용, PET는 교차·회전 상충 전용 (신호현시 정보 부재 대응)
-- 세션은 연속 관측이 아니라 호버링 구간의 묶음 — 파일 15분 중 유효 관측 3~4분, 교차로 하루당 약 35분. **노출량 분모는 실측 관측시간**
+- 세션은 연속 관측이 아니라 호버링 구간의 묶음 — 파일 15분 중 유효 관측 중앙 11분, 교차로 하루당 중앙 109분(전수 실측, 교차로 간 4.6배 편차). **노출량 분모는 실측 관측시간**
 - 검증: LOIO 20-fold(공간) + forward-chaining 3회(시간) + 교차로 내 잡음 바닥 + 쌍별 380회(보조)
 - 사전 지정 주분석: TTC 1.5초, 분위수 p=5%. **PET는 통용 대표값이 확인되지 않아 스윕 곡선 전체를 결과로 제시**
 - 가설 판정 기준은 분석 착수 전 확정 (상세 문서 5절)
