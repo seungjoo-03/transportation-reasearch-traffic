@@ -24,3 +24,6 @@ Thumbs.db
 
 # TAAS 크롤링 원자료 (로컬 전용 — 이용정책 고려)
 notebook/taas_output/
+
+# 탐지층 격자 사건표(대용량 재생성 가능 — 로컬 전용)
+data/processed/detection_sweep/
