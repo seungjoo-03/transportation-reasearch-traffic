@@ -110,6 +110,40 @@ def h6_tests(cc: pd.DataFrame, rank_df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows), m
 
 
+def v2v_refined(matched: pd.DataFrame, rank_df: pd.DataFrame) -> pd.DataFrame:
+    """차대차 사고 정제 + 교통량 통제 편상관 (주 대응 분석).
+    우리 상충 지표는 차량 대 차량만 재므로, 사고도 차대차로 맞추는 것이
+    동종 대응(like-for-like)이다. 차대사람(보행자) 사고는 지표 범위 밖 → 참고 분석.
+    교통량 통제: 대당 나누기는 사고-교통량의 비선형성 때문에 과잉 보정이므로
+    순위 잔차 편상관(partial Spearman)을 사용한다."""
+    near = matched[matched["dist_m"] <= RADIUS_MAIN]
+    v2v = near[near["acdnt_hdc"].astype(str).str.contains("차대차", na=False)]
+    cnt_all = v2v.groupby("nearest").size()
+    cnt_sev = v2v[v2v["acdnt_gae_dc"].isin(SEVERE)].groupby("nearest").size()
+    mv = pd.read_csv("data/processed/movement_summary.csv")
+    vol = mv.groupby("intersection")[["직진", "좌회전", "우회전"]].sum().sum(axis=1)
+    m = rank_df.set_index("intersection").copy()
+    m["v2v_all"] = cnt_all.reindex(m.index).fillna(0)
+    m["v2v_severe"] = cnt_sev.reindex(m.index).fillna(0)
+    m["volume"] = vol.reindex(m.index)
+
+    def partial_spearman(x, y, z):
+        rx, ry, rz = x.rank(), y.rank(), z.rank()
+        ex = rx - np.polyval(np.polyfit(rz, rx, 1), rz)
+        ey = ry - np.polyval(np.polyfit(rz, ry, 1), rz)
+        return spearmanr(ex, ey)
+
+    rows = []
+    conf = [c for c in rank_df.columns if c != "intersection"][0]   # rate_1.5s
+    for crash in ("v2v_all", "v2v_severe"):
+        rho, p = spearmanr(m[conf], m[crash])
+        rho_c, p_c = partial_spearman(m[conf], m[crash], m["volume"])
+        rows.append({"crash": crash, "conflict": conf, "n": len(m),
+                     "spearman": round(rho, 3), "p": round(p, 4),
+                     "partial_rho_volctrl": round(rho_c, 3), "partial_p": round(p_c, 4)})
+    return pd.DataFrame(rows)
+
+
 def grade_split(s: pd.Series) -> pd.Series:
     """값 내림차순으로 상(7)/중(6)/하(7) 등급 부여 (사전 규칙 7/6/7).
     동점은 평균 순위로 처리해 경계 동점의 자의성을 줄인다."""
@@ -206,6 +240,11 @@ def main():
     ga.to_csv(os.path.join(out, "h6_grades.csv"), index=False, encoding="utf-8-sig")
     print("\n=== H6 등급 분석 (사망+중상 희소 → 사전 규칙 상/중/하 7:6:7) ===")
     print(ga.to_string(index=False))
+
+    vv = v2v_refined(matched, rank_df)
+    vv.to_csv(os.path.join(out, "h6_v2v.csv"), index=False, encoding="utf-8-sig")
+    print("\n=== H6 주 대응 분석 (차대차 사고 + 교통량 통제 편상관) ===")
+    print(vv.to_string(index=False))
 
     plots(matched, cc, m)
     print(f"\n저장: {out}/, 그림: outputs/taas/")
