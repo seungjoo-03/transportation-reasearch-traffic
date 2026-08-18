@@ -1,0 +1,10 @@
+# 원본 대용량 드론 궤적데이터 (14GB, zip 80개) — GitHub 파일당 100MB 제한 초과
+data/raw/
+
+# 인용 논문 원문 PDF — 저작권 있는 자료, 재배포 방지 (요약/번역 md는 포함)
+references/**/*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
