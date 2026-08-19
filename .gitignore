@@ -8,3 +8,7 @@ references/**/*.pdf
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Claude Code / OMC 로컬 도구 상태 (세션·권한 캐시, 공유 불필요)
+.claude/
+.omc/
