@@ -229,7 +229,7 @@
 - **노트북 경로 수정 완료**: `analysis/01`, `02`의 `DATA_DIR`을 `C:/Users/123/Documents/...`로 바꿈. 두 노트북 모두 **아직 한 번도 실행 안 됨**(exec=null) — 사용자가 셀 단위로 실행할 차례.
 - **data/raw**: 압축 해제된 폴더 `{날짜}_{교차로}/` 80개 + 원본 zip 80개가 같이 있음(총 90GB). 노트북은 폴더 쪽을 읽음.
 - **VS Code 자동 연결**: `송도_교통연구.code-workspace`(폴더 루트) + 바탕화면 바로가기 `송도 교통연구 (VS Code).lnk` 생성. 워크스페이스 설정에 `desk` 인터프리터·자동저장·git autofetch 포함. Claude Code 확장은 열려 있는 워크스페이스 폴더를 작업 폴더로 쓰므로, 이 워크스페이스로 열면 모든 작업이 이 폴더에 저장됨.
-- **GitHub**: remote `origin` = `https://github.com/seungjoo-03/transportation-reasearch-traffic.git` (공개 repo, 사용자 계정 seungjoo-03, 로컬 git user.email=chris030102@gmail.com). `.gitignore`로 `data/raw/`(용량)와 `references/**/*.pdf`(저작권)는 제외 — 요약 md·노트북·CLAUDE.md만 올라감. `gh` CLI 없음. GitHub Desktop 설치돼 있고 seungjoo-03으로 로그인된 토큰이 Windows 자격증명에 있음. **git CLI용 자격증명(GCM)은 아직 없어서 첫 `git push` 때 브라우저 로그인 창이 뜸** — 사용자가 한 번 승인하면 이후 자동.
+- **GitHub**: remote `origin` = `https://github.com/seungjoo-03/transportation-reasearch-traffic.git` (공개 repo, 사용자 계정 seungjoo-03, 로컬 git user.email=chris030102@gmail.com). `.gitignore`로 `data/raw/`(용량)와 `references/**/*.pdf`(저작권)는 제외 — 요약 md·노트북·CLAUDE.md만 올라감. `gh` CLI 없음. GitHub Desktop 설치돼 있고 seungjoo-03으로 로그인됨. 2026-09-04 데스크탑에서 첫 push 성공(커밋 ab562dd) — 단, Claude의 도구 셸은 `GCM_INTERACTIVE=never`·`GIT_TERMINAL_PROMPT=0`이 걸려 있어 push가 막히므로, **Claude가 push할 땐 PowerShell `Start-Process`로 별도 창을 띄우고 그 안에서 위 두 환경변수를 풀어서 실행**해야 함(이번에 그 방식으로 성공).
 - **PDF 텍스트 추출**: Read 도구의 PDF 렌더링(pdftoppm)이 이 PC에 없음. `desk` env의 pypdf로 텍스트 추출해서 읽는 방식 사용(스크래치 폴더에 저장).
 
 **친구 repo에서 실제로 확인한 내용 (2026-09-04, 클론해서 전수 열람 — 판정은 위 "확정 규칙"과 동일, 아래는 근거 세부)**:
@@ -241,7 +241,6 @@
 
 ## 다음 할 일 (2026-09-04 갱신)
 
-0. **(사용자) 첫 `git push` 브라우저 로그인 1회** — 이후 자동. 또는 GitHub Desktop에서 Push.
 1. **점검 2 — 지점별 누적 관측시간**: `analysis/01_관측시간_점검.ipynb` (Claude 작성, 경로 수정 완료, 사용자 실행 — 커널 `desk`). 결과로 지점별 EVT 가능 여부 vs 구조별 합산 필요 여부 판단.
 2. **점검 1 — 좌회전 운영**: `analysis/02_좌회전운영_점검.ipynb` (K 교차로 1세션 → 40세션 → 20곳). 좌회전 vs 맞은편 직진의 교차로 내 동시존재 여부 → 상충유형 확정.
 3. 사건 정의 규칙을 AAP 2019 §3.2(또는 TR-C §4) 그대로 정리(채팅 검수) → 1개 지점 event table v0 + manual QA(계획 §6.5~6.6).
