@@ -228,7 +228,7 @@
 - **Python/커널**: anaconda env **`desk`** = `C:\Users\123\AppData\Local\anaconda3\envs\desk\python.exe` (Python 3.11.16, pandas 3.0.5, ipykernel 있음, pypdf 설치함). VS Code 노트북 커널은 이걸 선택. PATH의 `python`은 Windows 스토어 stub이라 Bash에서 안 됨(PowerShell에서 위 절대경로로 호출). base anaconda3(3.14.6)·miniconda3(3.14.7)도 있으나 pandas/ipykernel 미확인.
 - **노트북 경로 수정 완료**: `analysis/01`, `02`의 `DATA_DIR`을 `C:/Users/123/Documents/...`로 바꿈. 두 노트북 모두 **아직 한 번도 실행 안 됨**(exec=null) — 사용자가 셀 단위로 실행할 차례.
 - **data/raw**: 압축 해제된 폴더 `{날짜}_{교차로}/` 80개 + 원본 zip 80개가 같이 있음(총 90GB). 노트북은 폴더 쪽을 읽음.
-- **VS Code 자동 연결**: `송도_교통연구.code-workspace`(폴더 루트) + 바탕화면 바로가기 `송도 교통연구 (VS Code).lnk` 생성. 워크스페이스 설정에 `desk` 인터프리터·자동저장·git autofetch 포함. Claude Code 확장은 열려 있는 워크스페이스 폴더를 작업 폴더로 쓰므로, 이 워크스페이스로 열면 모든 작업이 이 폴더에 저장됨.
+- **작업 폴더 자동 연결(미해결)**: 사용자는 "Claude Code로 작업할 때 생기는 파일이 자동으로 문서(Documents) 폴더에 저장되게" 해달라고 했음. Claude가 처음에 `.code-workspace` 파일+바탕화면 바로가기로 오해해 만들었다가 사용자 지적으로 삭제함(2026-09-04). 공식 문서상 VS Code 확장·데스크탑 앱에는 기본 작업폴더 설정이 없고, CLI는 `claude -C <경로>`만 있음. 사용자가 원하는 정확한 의미를 확인한 뒤 처리할 것.
 - **GitHub**: remote `origin` = `https://github.com/seungjoo-03/transportation-reasearch-traffic.git` (공개 repo, 사용자 계정 seungjoo-03, 로컬 git user.email=chris030102@gmail.com). `.gitignore`로 `data/raw/`(용량)와 `references/**/*.pdf`(저작권)는 제외 — 요약 md·노트북·CLAUDE.md만 올라감. `gh` CLI 없음. GitHub Desktop 설치돼 있고 seungjoo-03으로 로그인됨. 2026-09-04 데스크탑에서 첫 push 성공(커밋 ab562dd) — 단, Claude의 도구 셸은 `GCM_INTERACTIVE=never`·`GIT_TERMINAL_PROMPT=0`이 걸려 있어 push가 막히므로, **Claude가 push할 땐 PowerShell `Start-Process`로 별도 창을 띄우고 그 안에서 위 두 환경변수를 풀어서 실행**해야 함(이번에 그 방식으로 성공).
 - **PDF 텍스트 추출**: Read 도구의 PDF 렌더링(pdftoppm)이 이 PC에 없음. `desk` env의 pypdf로 텍스트 추출해서 읽는 방식 사용(스크래치 폴더에 저장).
 
