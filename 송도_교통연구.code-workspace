@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    "python.defaultInterpreterPath": "C:/Users/123/AppData/Local/anaconda3/envs/desk/python.exe",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false
+  }
+}
