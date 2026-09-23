@@ -1,0 +1,1300 @@
+{
+  "audit_date": "2026-09-08",
+  "scope": "Read-only provenance, package completeness, ZIP CRC, extracted-file CRC/size, CSV-header and recording/track metadata checks. No conflict extraction or EVT fitting.",
+  "root": "C:/Users/123/Documents/(송도) 교통 연구 논문",
+  "methods": [
+    "Read every non-directory member of all 88 ZIPs to end; compare decompressed byte count and CRC32 with ZIP metadata. zipfile also validates CRC.",
+    "For Songdo members, compare corresponding already extracted file size and streamed CRC32 with ZIP metadata.",
+    "Hash every local ZIP with MD5; compare Songdo hashes to the official Zenodo v2 web manifest.",
+    "Verify Songdo expected dates x sites x 10 AM/PM session names, and all 800 CSV header strings.",
+    "Read every German recordingMeta and tracksMeta CSV; validate track counts, ID uniqueness and metadata frame-span arithmetic.",
+    "Count every German tracks CSV data row and compare to sum(tracksMeta.numFrames).",
+    "Independently parse all exiD tracks CSVs by track to investigate its systematic final-frame discrepancy."
+  ],
+  "zip_integrity": {
+    "archives": 88,
+    "non_directory_members": 1909,
+    "crc_or_size_errors": 0
+  },
+  "songdo": {
+    "source": "https://zenodo.org/records/17924857",
+    "version": "v2",
+    "local_readme_version": "v2.0",
+    "official_manifest_files": 86,
+    "local_manifest_files": 85,
+    "missing_official_files": [
+      "sample_videos.zip"
+    ],
+    "zip_files": 83,
+    "trajectory_zip_files": 80,
+    "trajectory_csv_files": 800,
+    "dates": [
+      "2022-10-04",
+      "2022-10-05",
+      "2022-10-06",
+      "2022-10-07"
+    ],
+    "sites": [
+      "A",
+      "B",
+      "C",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U"
+    ],
+    "sessions": [
+      "AM1",
+      "AM2",
+      "AM3",
+      "AM4",
+      "AM5",
+      "PM1",
+      "PM2",
+      "PM3",
+      "PM4",
+      "PM5"
+    ],
+    "missing_or_extra_daily_archives": [],
+    "missing_or_extra_session_filenames": [],
+    "csv_header_variants": 1,
+    "csv_data_rows": 776944506,
+    "row_count_method": "Count physical line breaks, account for optional final line break, subtract one header per CSV. Not unique vehicles or events.",
+    "extracted_member_crc_or_size_errors": 0,
+    "md5_comparisons": [
+      {
+        "name": "2022-10-04_A.zip",
+        "local_md5": "4ed59b8c13c2b0d6cec7f8c175ad8f0e",
+        "official_md5": "4ed59b8c13c2b0d6cec7f8c175ad8f0e",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_B.zip",
+        "local_md5": "5f2e7216dadc259cf8b2888313f1a1c8",
+        "official_md5": "5f2e7216dadc259cf8b2888313f1a1c8",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_C.zip",
+        "local_md5": "eadddba9317fb2ad7c6a568ac3b3036f",
+        "official_md5": "eadddba9317fb2ad7c6a568ac3b3036f",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_E.zip",
+        "local_md5": "b73586263f160a7954fc3010ab3867a5",
+        "official_md5": "b73586263f160a7954fc3010ab3867a5",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_F.zip",
+        "local_md5": "409a98aec19fc30d714e2150795d87c0",
+        "official_md5": "409a98aec19fc30d714e2150795d87c0",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_G.zip",
+        "local_md5": "f17faf5629a57e230ba896d26ce4c467",
+        "official_md5": "f17faf5629a57e230ba896d26ce4c467",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_H.zip",
+        "local_md5": "5481e1f88ab4c0ade1c48cb77ed5cd8f",
+        "official_md5": "5481e1f88ab4c0ade1c48cb77ed5cd8f",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_I.zip",
+        "local_md5": "d983a71cf9fa7bbe1d7685436f7152e1",
+        "official_md5": "d983a71cf9fa7bbe1d7685436f7152e1",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_J.zip",
+        "local_md5": "513980a2a0f25b1e7c69111fe74ab05d",
+        "official_md5": "513980a2a0f25b1e7c69111fe74ab05d",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_K.zip",
+        "local_md5": "078115af6192600e98a2437e105f77b8",
+        "official_md5": "078115af6192600e98a2437e105f77b8",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_L.zip",
+        "local_md5": "f5cb14ead890ee7db5903704ed0e96f5",
+        "official_md5": "f5cb14ead890ee7db5903704ed0e96f5",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_M.zip",
+        "local_md5": "6353032fe63de1e13206645540a70395",
+        "official_md5": "6353032fe63de1e13206645540a70395",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_N.zip",
+        "local_md5": "571792bfe36a7acb810519f5531e5200",
+        "official_md5": "571792bfe36a7acb810519f5531e5200",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_O.zip",
+        "local_md5": "b608ea6e12ea698104c7b468f959625a",
+        "official_md5": "b608ea6e12ea698104c7b468f959625a",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_P.zip",
+        "local_md5": "d3dbfc91ffde5ae85352532edf7f348f",
+        "official_md5": "d3dbfc91ffde5ae85352532edf7f348f",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_Q.zip",
+        "local_md5": "348115e6aff8f8d6d33f2b5787ec5543",
+        "official_md5": "348115e6aff8f8d6d33f2b5787ec5543",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_R.zip",
+        "local_md5": "985bdc65078db30f150f207f74eb426f",
+        "official_md5": "985bdc65078db30f150f207f74eb426f",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_S.zip",
+        "local_md5": "a98e7a368ea7949e2efc7a5593f736af",
+        "official_md5": "a98e7a368ea7949e2efc7a5593f736af",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_T.zip",
+        "local_md5": "48f2267b342d47d76938f5aa7ea78f99",
+        "official_md5": "48f2267b342d47d76938f5aa7ea78f99",
+        "matches": true
+      },
+      {
+        "name": "2022-10-04_U.zip",
+        "local_md5": "1e3359038edac6c4598cba27162afb0c",
+        "official_md5": "1e3359038edac6c4598cba27162afb0c",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_A.zip",
+        "local_md5": "faab1e48341f4f863214e7ab8e170a5d",
+        "official_md5": "faab1e48341f4f863214e7ab8e170a5d",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_B.zip",
+        "local_md5": "f1fb8fe7660aa002d7acc007ba897504",
+        "official_md5": "f1fb8fe7660aa002d7acc007ba897504",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_C.zip",
+        "local_md5": "ad48eb7d682cc220127a9c181afaf1f1",
+        "official_md5": "ad48eb7d682cc220127a9c181afaf1f1",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_E.zip",
+        "local_md5": "19a8dde36f2fc86b3c5eeb06cb5c8d81",
+        "official_md5": "19a8dde36f2fc86b3c5eeb06cb5c8d81",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_F.zip",
+        "local_md5": "b940bc9a4d7bc8eedd8c14bcd03702bc",
+        "official_md5": "b940bc9a4d7bc8eedd8c14bcd03702bc",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_G.zip",
+        "local_md5": "08e7e55d20a140a5802c9096742b9c5f",
+        "official_md5": "08e7e55d20a140a5802c9096742b9c5f",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_H.zip",
+        "local_md5": "971cdab4656004ba1e9717fd7f44cc2c",
+        "official_md5": "971cdab4656004ba1e9717fd7f44cc2c",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_I.zip",
+        "local_md5": "34e1ad03fe984257dbdf68ce07e958fc",
+        "official_md5": "34e1ad03fe984257dbdf68ce07e958fc",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_J.zip",
+        "local_md5": "e7c45a5b9fe465531305bc5b85661275",
+        "official_md5": "e7c45a5b9fe465531305bc5b85661275",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_K.zip",
+        "local_md5": "9659d33df757a71bdb0b0515bbd73a86",
+        "official_md5": "9659d33df757a71bdb0b0515bbd73a86",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_L.zip",
+        "local_md5": "c8ef0c57ab63fbfc5e2b4d63112b7376",
+        "official_md5": "c8ef0c57ab63fbfc5e2b4d63112b7376",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_M.zip",
+        "local_md5": "c941da842661899a933627fa53f950ab",
+        "official_md5": "c941da842661899a933627fa53f950ab",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_N.zip",
+        "local_md5": "6acfcdeb2147b1e852b41e4a9daf1cb4",
+        "official_md5": "6acfcdeb2147b1e852b41e4a9daf1cb4",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_O.zip",
+        "local_md5": "3a278dd882a1393e1f69937897682969",
+        "official_md5": "3a278dd882a1393e1f69937897682969",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_P.zip",
+        "local_md5": "a4008d1e24055e724b0f71cc78c32b5a",
+        "official_md5": "a4008d1e24055e724b0f71cc78c32b5a",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_Q.zip",
+        "local_md5": "45f551876d63ef996d8ff7cae02ce456",
+        "official_md5": "45f551876d63ef996d8ff7cae02ce456",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_R.zip",
+        "local_md5": "29b5b4deb975875ffb7bebd672b23fda",
+        "official_md5": "29b5b4deb975875ffb7bebd672b23fda",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_S.zip",
+        "local_md5": "8a9b5046d50f72cf60570a54d6c93349",
+        "official_md5": "8a9b5046d50f72cf60570a54d6c93349",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_T.zip",
+        "local_md5": "8221e3fe489624f4e6e87762fdf261cd",
+        "official_md5": "8221e3fe489624f4e6e87762fdf261cd",
+        "matches": true
+      },
+      {
+        "name": "2022-10-05_U.zip",
+        "local_md5": "1e4f58d8c728de2564f717ec87192eb3",
+        "official_md5": "1e4f58d8c728de2564f717ec87192eb3",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_A.zip",
+        "local_md5": "2fac0a95f874c43be057c47924baf526",
+        "official_md5": "2fac0a95f874c43be057c47924baf526",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_B.zip",
+        "local_md5": "33c4c8dcef44973bb0c26b09e241a634",
+        "official_md5": "33c4c8dcef44973bb0c26b09e241a634",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_C.zip",
+        "local_md5": "e4eaea217d8fd101c7c02c027e8bf2c7",
+        "official_md5": "e4eaea217d8fd101c7c02c027e8bf2c7",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_E.zip",
+        "local_md5": "b824b6350bfcfec8e23799b5bb186ab4",
+        "official_md5": "b824b6350bfcfec8e23799b5bb186ab4",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_F.zip",
+        "local_md5": "80cf62f635310696b23f557cb0442545",
+        "official_md5": "80cf62f635310696b23f557cb0442545",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_G.zip",
+        "local_md5": "183f97bd5a9871c240cbbf70b1dcc73e",
+        "official_md5": "183f97bd5a9871c240cbbf70b1dcc73e",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_H.zip",
+        "local_md5": "2ec47bb36fd4eb12b6d2fed1c061ea7e",
+        "official_md5": "2ec47bb36fd4eb12b6d2fed1c061ea7e",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_I.zip",
+        "local_md5": "e8a84dbccd9d83a12ff672d1456e2010",
+        "official_md5": "e8a84dbccd9d83a12ff672d1456e2010",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_J.zip",
+        "local_md5": "ddbcec7509746145f3a5cb4fa00ecbfe",
+        "official_md5": "ddbcec7509746145f3a5cb4fa00ecbfe",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_K.zip",
+        "local_md5": "33e2fc3da9ded524ad93c861d073fbe7",
+        "official_md5": "33e2fc3da9ded524ad93c861d073fbe7",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_L.zip",
+        "local_md5": "ef0dfa621351841e6c954f3176d33975",
+        "official_md5": "ef0dfa621351841e6c954f3176d33975",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_M.zip",
+        "local_md5": "d4e3a9742bc6c8db44c588d8a604891c",
+        "official_md5": "d4e3a9742bc6c8db44c588d8a604891c",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_N.zip",
+        "local_md5": "c4f1fc6c3f3c60c98522fdab986b7570",
+        "official_md5": "c4f1fc6c3f3c60c98522fdab986b7570",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_O.zip",
+        "local_md5": "90122f8ef33807b86b198400c5fbc166",
+        "official_md5": "90122f8ef33807b86b198400c5fbc166",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_P.zip",
+        "local_md5": "81fc6c254c96569eaa40903f0c0ff009",
+        "official_md5": "81fc6c254c96569eaa40903f0c0ff009",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_Q.zip",
+        "local_md5": "bea34fe22d9b4ddc251114d77430974b",
+        "official_md5": "bea34fe22d9b4ddc251114d77430974b",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_R.zip",
+        "local_md5": "8330701fbe4d0dc8f50599ea38b1e516",
+        "official_md5": "8330701fbe4d0dc8f50599ea38b1e516",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_S.zip",
+        "local_md5": "1d78e426ef43768091102f4e16e74f1d",
+        "official_md5": "1d78e426ef43768091102f4e16e74f1d",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_T.zip",
+        "local_md5": "a0545665bdab4f05baa7ffb61021c024",
+        "official_md5": "a0545665bdab4f05baa7ffb61021c024",
+        "matches": true
+      },
+      {
+        "name": "2022-10-06_U.zip",
+        "local_md5": "024417b2119b2f6726483c6285aed5aa",
+        "official_md5": "024417b2119b2f6726483c6285aed5aa",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_A.zip",
+        "local_md5": "cd5d1e59ee25a8e24fa700e4aa607d8f",
+        "official_md5": "cd5d1e59ee25a8e24fa700e4aa607d8f",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_B.zip",
+        "local_md5": "084abf4275591dd430ed546de4467d39",
+        "official_md5": "084abf4275591dd430ed546de4467d39",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_C.zip",
+        "local_md5": "dfd8e422127c55ccf870218df04825c9",
+        "official_md5": "dfd8e422127c55ccf870218df04825c9",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_E.zip",
+        "local_md5": "6ad00a6e33610b9bfb0127dcb4d42022",
+        "official_md5": "6ad00a6e33610b9bfb0127dcb4d42022",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_F.zip",
+        "local_md5": "2d061e940effab1c78e0c5f2f1e9f813",
+        "official_md5": "2d061e940effab1c78e0c5f2f1e9f813",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_G.zip",
+        "local_md5": "1ebdc260b68426f575e28380ab8230db",
+        "official_md5": "1ebdc260b68426f575e28380ab8230db",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_H.zip",
+        "local_md5": "ad88316f38c7779efb6289dd69ab6f59",
+        "official_md5": "ad88316f38c7779efb6289dd69ab6f59",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_I.zip",
+        "local_md5": "39953b7df017ebe5874806c706be8677",
+        "official_md5": "39953b7df017ebe5874806c706be8677",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_J.zip",
+        "local_md5": "6880fa140f801d556627d00401562695",
+        "official_md5": "6880fa140f801d556627d00401562695",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_K.zip",
+        "local_md5": "6fd296896a7f7f90cad26fb889c3b749",
+        "official_md5": "6fd296896a7f7f90cad26fb889c3b749",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_L.zip",
+        "local_md5": "c549f0f25b5288c80dfb659ef0816ecb",
+        "official_md5": "c549f0f25b5288c80dfb659ef0816ecb",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_M.zip",
+        "local_md5": "79093027c266e967a0e857f78aec48c9",
+        "official_md5": "79093027c266e967a0e857f78aec48c9",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_N.zip",
+        "local_md5": "a105c78239647ab912bf759ddb1ae25d",
+        "official_md5": "a105c78239647ab912bf759ddb1ae25d",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_O.zip",
+        "local_md5": "8934c3d6f5362ddcb9be0c08a08a35a4",
+        "official_md5": "8934c3d6f5362ddcb9be0c08a08a35a4",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_P.zip",
+        "local_md5": "dee6e859bbcd80238bf3d09573824407",
+        "official_md5": "dee6e859bbcd80238bf3d09573824407",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_Q.zip",
+        "local_md5": "30a6d175e91b560d47a15b22f094f8b0",
+        "official_md5": "30a6d175e91b560d47a15b22f094f8b0",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_R.zip",
+        "local_md5": "e92f12650de857d638f7f9db988eb98f",
+        "official_md5": "e92f12650de857d638f7f9db988eb98f",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_S.zip",
+        "local_md5": "ca36707ede0baef6f0494306ecf278ee",
+        "official_md5": "ca36707ede0baef6f0494306ecf278ee",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_T.zip",
+        "local_md5": "9d87c25836891e0bdc5beeaeb5f0ea34",
+        "official_md5": "9d87c25836891e0bdc5beeaeb5f0ea34",
+        "matches": true
+      },
+      {
+        "name": "2022-10-07_U.zip",
+        "local_md5": "292f9c30dbb0ccda67d45fd67f34eb14",
+        "official_md5": "292f9c30dbb0ccda67d45fd67f34eb14",
+        "matches": true
+      },
+      {
+        "name": "master_frames.zip",
+        "local_md5": "4af9a065be7bcc4ac09ac45a9ce1af71",
+        "official_md5": "4af9a065be7bcc4ac09ac45a9ce1af71",
+        "matches": true
+      },
+      {
+        "name": "orthophotos.zip",
+        "local_md5": "31a2712a456a22b3db8d5513e75da8b2",
+        "official_md5": "31a2712a456a22b3db8d5513e75da8b2",
+        "matches": true
+      },
+      {
+        "name": "segmentations.zip",
+        "local_md5": "c39304c88ddf39f3e0a40b8621d384b9",
+        "official_md5": "c39304c88ddf39f3e0a40b8621d384b9",
+        "matches": true
+      }
+    ],
+    "documentation_md5_comparisons": [
+      {
+        "name": "README.md",
+        "local_md5": "06104d1fb4bc3e799dba1cc9b46491f6",
+        "official_md5": "06104d1fb4bc3e799dba1cc9b46491f6",
+        "matches": true
+      },
+      {
+        "name": "LICENSE.txt",
+        "local_md5": "527dc6cad772ccb187d5bfe5af738204",
+        "official_md5": "527dc6cad772ccb187d5bfe5af738204",
+        "matches": true
+      }
+    ],
+    "observation_hours": "not_computed",
+    "unique_tracks": "not_computed",
+    "limitations": [
+      "Package equality does not establish trajectory physical accuracy or complete continuous observations.",
+      "29 one-minute public video samples are missing; these are distinct from the full experiment raw videos.",
+      "Per-site signal operation, valid observation time and EVT-tail adequacy remain to be evaluated."
+    ]
+  },
+  "german": [
+    {
+      "dataset": "exiD",
+      "version": "2.1",
+      "file": "exiD-dataset-v2.1.zip",
+      "recordings": 93,
+      "ids": "00-92",
+      "locations": 7,
+      "hours": 16.109444444444446,
+      "tracks": 69430,
+      "metadata_numFrames": 26413966,
+      "actual_track_rows": 26413873,
+      "crc_pass": true,
+      "source": "https://levelxdata.com/exid-dataset/",
+      "frame_rate_hz": 25,
+      "local_md5": "00fcb545d7fbdfacaaff32b9a9686a41",
+      "official_version_manifest_and_checksum": "not_found",
+      "local_track_metadata_count_or_id_issues": 0
+    },
+    {
+      "dataset": "highD",
+      "version": "1.0",
+      "file": "highD-dataset-v1.0.zip",
+      "recordings": 60,
+      "ids": "01-60",
+      "locations": 6,
+      "hours": 16.65537777777778,
+      "tracks": 110516,
+      "metadata_numFrames": 39725708,
+      "actual_track_rows": 39725708,
+      "crc_pass": true,
+      "source": "https://levelxdata.com/highd-dataset/",
+      "frame_rate_hz": 25,
+      "local_md5": "37b6b39885bb05399670d9a0d8687521",
+      "official_version_manifest_and_checksum": "not_found",
+      "local_track_metadata_count_or_id_issues": 0
+    },
+    {
+      "dataset": "inD",
+      "version": "1.1",
+      "file": "inD-dataset-v1.1.zip",
+      "recordings": 33,
+      "ids": "00-32",
+      "locations": 4,
+      "hours": 9.819233333333333,
+      "tracks": 13599,
+      "metadata_numFrames": 14175184,
+      "actual_track_rows": 14175184,
+      "crc_pass": true,
+      "source": "https://levelxdata.com/ind-dataset/",
+      "frame_rate_hz": 25,
+      "local_md5": "57fe60683b92dccbf07b172dd3728d40",
+      "official_version_manifest_and_checksum": "not_found",
+      "local_track_metadata_count_or_id_issues": 0
+    },
+    {
+      "dataset": "rounD",
+      "version": "1.1",
+      "file": "round-dataset-v1.1.zip",
+      "recordings": 24,
+      "ids": "00-23",
+      "locations": 3,
+      "hours": 6.608088888888888,
+      "tracks": 13746,
+      "metadata_numFrames": 5447095,
+      "actual_track_rows": 5447095,
+      "crc_pass": true,
+      "source": "https://levelxdata.com/round-dataset/",
+      "frame_rate_hz": 25,
+      "local_md5": "d3964977cc4d2b04b4a606e0779e8a80",
+      "official_version_manifest_and_checksum": "not_found",
+      "local_track_metadata_count_or_id_issues": 0
+    },
+    {
+      "dataset": "uniD",
+      "version": "1.1",
+      "file": "uniD-dataset-v1.1.zip",
+      "recordings": 13,
+      "ids": "00-12",
+      "locations": 1,
+      "hours": 3.235077777777778,
+      "tracks": 9982,
+      "metadata_numFrames": 6547976,
+      "actual_track_rows": 6547976,
+      "crc_pass": true,
+      "source": "https://levelxdata.com/unid-dataset/",
+      "frame_rate_hz": 25,
+      "local_md5": "70ad1b24d50339a32d8a2b2a3f5f08f4",
+      "official_version_manifest_and_checksum": "not_found",
+      "local_track_metadata_count_or_id_issues": 0
+    }
+  ],
+  "exid_discrepancy": {
+    "affected_recordings": 93,
+    "rows_difference": 93,
+    "missing_or_extra_track_ids": 0,
+    "pattern": "Exactly one track per recording (the final CSV track) has actual numFrames = metadata numFrames - 1; actual initial frame matches; actual final frame = metadata finalFrame - 1. Other tracks match counts. Affected-track frame intervals are consecutive.",
+    "cause": "not_found; exporter versus metadata origin not established; do not infer download damage.",
+    "examples": [
+      {
+        "recording": "00",
+        "trackId": 1408,
+        "metadata": [
+          25376,
+          25400,
+          25
+        ],
+        "actual": [
+          25376,
+          25399,
+          24
+        ]
+      },
+      {
+        "recording": "92",
+        "trackId": 1074,
+        "metadata": [
+          24360,
+          24419,
+          60
+        ],
+        "actual": [
+          24360,
+          24418,
+          59
+        ]
+      }
+    ],
+    "raw_row_count_comparisons": [
+      [
+        "data/00_tracks.csv",
+        "rows",
+        521679,
+        521680
+      ],
+      [
+        "data/01_tracks.csv",
+        "rows",
+        322264,
+        322265
+      ],
+      [
+        "data/02_tracks.csv",
+        "rows",
+        60604,
+        60605
+      ],
+      [
+        "data/03_tracks.csv",
+        "rows",
+        444489,
+        444490
+      ],
+      [
+        "data/04_tracks.csv",
+        "rows",
+        70418,
+        70419
+      ],
+      [
+        "data/05_tracks.csv",
+        "rows",
+        265302,
+        265303
+      ],
+      [
+        "data/06_tracks.csv",
+        "rows",
+        135630,
+        135631
+      ],
+      [
+        "data/07_tracks.csv",
+        "rows",
+        41364,
+        41365
+      ],
+      [
+        "data/08_tracks.csv",
+        "rows",
+        69586,
+        69587
+      ],
+      [
+        "data/09_tracks.csv",
+        "rows",
+        126215,
+        126216
+      ],
+      [
+        "data/10_tracks.csv",
+        "rows",
+        96558,
+        96559
+      ],
+      [
+        "data/11_tracks.csv",
+        "rows",
+        320872,
+        320873
+      ],
+      [
+        "data/12_tracks.csv",
+        "rows",
+        112813,
+        112814
+      ],
+      [
+        "data/13_tracks.csv",
+        "rows",
+        238321,
+        238322
+      ],
+      [
+        "data/14_tracks.csv",
+        "rows",
+        294779,
+        294780
+      ],
+      [
+        "data/15_tracks.csv",
+        "rows",
+        177411,
+        177412
+      ],
+      [
+        "data/16_tracks.csv",
+        "rows",
+        87216,
+        87217
+      ],
+      [
+        "data/17_tracks.csv",
+        "rows",
+        70869,
+        70870
+      ],
+      [
+        "data/18_tracks.csv",
+        "rows",
+        32382,
+        32383
+      ],
+      [
+        "data/19_tracks.csv",
+        "rows",
+        924938,
+        924939
+      ],
+      [
+        "data/20_tracks.csv",
+        "rows",
+        305781,
+        305782
+      ],
+      [
+        "data/21_tracks.csv",
+        "rows",
+        48704,
+        48705
+      ],
+      [
+        "data/22_tracks.csv",
+        "rows",
+        581713,
+        581714
+      ],
+      [
+        "data/23_tracks.csv",
+        "rows",
+        289332,
+        289333
+      ],
+      [
+        "data/24_tracks.csv",
+        "rows",
+        160193,
+        160194
+      ],
+      [
+        "data/25_tracks.csv",
+        "rows",
+        267129,
+        267130
+      ],
+      [
+        "data/26_tracks.csv",
+        "rows",
+        138372,
+        138373
+      ],
+      [
+        "data/27_tracks.csv",
+        "rows",
+        54625,
+        54626
+      ],
+      [
+        "data/28_tracks.csv",
+        "rows",
+        31275,
+        31276
+      ],
+      [
+        "data/29_tracks.csv",
+        "rows",
+        29353,
+        29354
+      ],
+      [
+        "data/30_tracks.csv",
+        "rows",
+        97166,
+        97167
+      ],
+      [
+        "data/31_tracks.csv",
+        "rows",
+        87575,
+        87576
+      ],
+      [
+        "data/32_tracks.csv",
+        "rows",
+        217742,
+        217743
+      ],
+      [
+        "data/33_tracks.csv",
+        "rows",
+        414966,
+        414967
+      ],
+      [
+        "data/34_tracks.csv",
+        "rows",
+        249654,
+        249655
+      ],
+      [
+        "data/35_tracks.csv",
+        "rows",
+        271661,
+        271662
+      ],
+      [
+        "data/36_tracks.csv",
+        "rows",
+        308325,
+        308326
+      ],
+      [
+        "data/37_tracks.csv",
+        "rows",
+        124209,
+        124210
+      ],
+      [
+        "data/38_tracks.csv",
+        "rows",
+        434892,
+        434893
+      ],
+      [
+        "data/39_tracks.csv",
+        "rows",
+        444360,
+        444361
+      ],
+      [
+        "data/40_tracks.csv",
+        "rows",
+        418526,
+        418527
+      ],
+      [
+        "data/41_tracks.csv",
+        "rows",
+        434442,
+        434443
+      ],
+      [
+        "data/42_tracks.csv",
+        "rows",
+        86762,
+        86763
+      ],
+      [
+        "data/43_tracks.csv",
+        "rows",
+        362825,
+        362826
+      ],
+      [
+        "data/44_tracks.csv",
+        "rows",
+        137591,
+        137592
+      ],
+      [
+        "data/45_tracks.csv",
+        "rows",
+        320796,
+        320797
+      ],
+      [
+        "data/46_tracks.csv",
+        "rows",
+        486986,
+        486987
+      ],
+      [
+        "data/47_tracks.csv",
+        "rows",
+        181367,
+        181368
+      ],
+      [
+        "data/48_tracks.csv",
+        "rows",
+        233666,
+        233667
+      ],
+      [
+        "data/49_tracks.csv",
+        "rows",
+        451708,
+        451709
+      ],
+      [
+        "data/50_tracks.csv",
+        "rows",
+        54511,
+        54512
+      ],
+      [
+        "data/51_tracks.csv",
+        "rows",
+        294229,
+        294230
+      ],
+      [
+        "data/52_tracks.csv",
+        "rows",
+        85186,
+        85187
+      ],
+      [
+        "data/53_tracks.csv",
+        "rows",
+        371305,
+        371306
+      ],
+      [
+        "data/54_tracks.csv",
+        "rows",
+        457555,
+        457556
+      ],
+      [
+        "data/55_tracks.csv",
+        "rows",
+        210985,
+        210986
+      ],
+      [
+        "data/56_tracks.csv",
+        "rows",
+        277605,
+        277606
+      ],
+      [
+        "data/57_tracks.csv",
+        "rows",
+        464438,
+        464439
+      ],
+      [
+        "data/58_tracks.csv",
+        "rows",
+        228788,
+        228789
+      ],
+      [
+        "data/59_tracks.csv",
+        "rows",
+        437776,
+        437777
+      ],
+      [
+        "data/60_tracks.csv",
+        "rows",
+        121879,
+        121880
+      ],
+      [
+        "data/61_tracks.csv",
+        "rows",
+        273524,
+        273525
+      ],
+      [
+        "data/62_tracks.csv",
+        "rows",
+        426860,
+        426861
+      ],
+      [
+        "data/63_tracks.csv",
+        "rows",
+        782872,
+        782873
+      ],
+      [
+        "data/64_tracks.csv",
+        "rows",
+        128331,
+        128332
+      ],
+      [
+        "data/65_tracks.csv",
+        "rows",
+        403931,
+        403932
+      ],
+      [
+        "data/66_tracks.csv",
+        "rows",
+        667243,
+        667244
+      ],
+      [
+        "data/67_tracks.csv",
+        "rows",
+        694567,
+        694568
+      ],
+      [
+        "data/68_tracks.csv",
+        "rows",
+        1430523,
+        1430524
+      ],
+      [
+        "data/69_tracks.csv",
+        "rows",
+        630503,
+        630504
+      ],
+      [
+        "data/70_tracks.csv",
+        "rows",
+        96266,
+        96267
+      ],
+      [
+        "data/71_tracks.csv",
+        "rows",
+        120682,
+        120683
+      ],
+      [
+        "data/72_tracks.csv",
+        "rows",
+        115233,
+        115234
+      ],
+      [
+        "data/73_tracks.csv",
+        "rows",
+        640157,
+        640158
+      ],
+      [
+        "data/74_tracks.csv",
+        "rows",
+        515052,
+        515053
+      ],
+      [
+        "data/75_tracks.csv",
+        "rows",
+        572109,
+        572110
+      ],
+      [
+        "data/76_tracks.csv",
+        "rows",
+        496560,
+        496561
+      ],
+      [
+        "data/77_tracks.csv",
+        "rows",
+        112863,
+        112864
+      ],
+      [
+        "data/78_tracks.csv",
+        "rows",
+        202949,
+        202950
+      ],
+      [
+        "data/79_tracks.csv",
+        "rows",
+        239483,
+        239484
+      ],
+      [
+        "data/80_tracks.csv",
+        "rows",
+        73524,
+        73525
+      ],
+      [
+        "data/81_tracks.csv",
+        "rows",
+        84231,
+        84232
+      ],
+      [
+        "data/82_tracks.csv",
+        "rows",
+        494857,
+        494858
+      ],
+      [
+        "data/83_tracks.csv",
+        "rows",
+        24312,
+        24313
+      ],
+      [
+        "data/84_tracks.csv",
+        "rows",
+        270600,
+        270601
+      ],
+      [
+        "data/85_tracks.csv",
+        "rows",
+        124957,
+        124958
+      ],
+      [
+        "data/86_tracks.csv",
+        "rows",
+        618499,
+        618500
+      ],
+      [
+        "data/87_tracks.csv",
+        "rows",
+        67889,
+        67890
+      ],
+      [
+        "data/88_tracks.csv",
+        "rows",
+        195119,
+        195120
+      ],
+      [
+        "data/89_tracks.csv",
+        "rows",
+        179543,
+        179544
+      ],
+      [
+        "data/90_tracks.csv",
+        "rows",
+        45883,
+        45884
+      ],
+      [
+        "data/91_tracks.csv",
+        "rows",
+        235690,
+        235691
+      ],
+      [
+        "data/92_tracks.csv",
+        "rows",
+        359398,
+        359399
+      ]
+    ]
+  },
+  "notion": {
+    "page": "https://app.notion.com/p/3d56a4817ca1800e8d03d8d01fde5d51",
+    "authorization": "User explicitly instructed link-only; do not publish/update until requested.",
+    "modified": false
+  },
+  "research_scope": "Songdo primary; German datasets are candidates, not all automatically included. One conflict type to be selected with user/advisor.",
+  "limits": [
+    "German local package integrity and metadata consistency do not prove equality to an official version checksum.",
+    "German hours are summed recording durations, not sum of individual driven times.",
+    "File screening of literature does not constitute complete full-text reading of all 45 entries."
+  ],
+  "zip_check_elapsed_seconds": 291.2
+}

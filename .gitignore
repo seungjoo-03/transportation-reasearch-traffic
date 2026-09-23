@@ -12,3 +12,12 @@ desktop.ini
 # Claude Code / OMC 로컬 도구 상태 (세션·권한 캐시, 공유 불필요)
 .claude/
 .omc/
+.omx/
+
+# Downloaded source datasets
+data/Gmr data/
+
+# 노트북 실행별 파생 결과 (원자료+노트북으로 재생성 가능)
+# 01 songdo_movement, 02 songdo_routes, 03 songdo_route_geometry,
+# 04 songdo_structure, 05 songdo_events, 06 songdo_evt
+data/processed/

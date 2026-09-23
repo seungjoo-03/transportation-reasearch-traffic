@@ -1,0 +1,10 @@
+{
+  "report_pages": 17,
+  "new_source_pdfs": 6,
+  "pdf_parse_and_hashes": "pass",
+  "visual_review": "17 pages inspected; no clipping or missing Korean glyphs",
+  "independent_content_review": "completed; OR vs marginal risk-region distinction corrected",
+  "analysis_models_run": false,
+  "notion_updated": false,
+  "raw_data_modified": false
+}

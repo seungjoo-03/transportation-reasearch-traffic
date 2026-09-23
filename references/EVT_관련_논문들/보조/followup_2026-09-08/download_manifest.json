@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "filename": "S01_EN_Chen_2024_AMAR_Stochastic method based on copulas for predicting severe road traffic interactions.pdf",
+    "doi": "10.1016/j.amar.2024.100347",
+    "source_url": "https://lucris.lub.lu.se/ws/portalfiles/portal/207286563/New_SMoS_Indicators_AMAR.pdf",
+    "version": "publisher version via Lund",
+    "accessed": "2026-09-08",
+    "pages": 18,
+    "bytes": 5101756,
+    "sha256": "c231287cd5e03cdfd21040c3c13b70ecc21d948f7581bc83850d0dd3fd61de11",
+    "valid_pdf": true
+  },
+  {
+    "id": "S02",
+    "filename": "S02_EN_Jiao_2025_AMAR_A unified probabilistic approach to traffic conflict detection.pdf",
+    "doi": "10.1016/j.amar.2024.100369",
+    "source_url": "https://pure.tudelft.nl/ws/portalfiles/portal/233926872/1-s2.0-S2213665724000538-main.pdf",
+    "version": "publisher version via TU Delft; same work as existing arXiv 30",
+    "accessed": "2026-09-08",
+    "pages": 19,
+    "bytes": 3228675,
+    "sha256": "0199dd0041a46d9abec2a490e1f1fd2668dfeb0537412dda113dd64d3e4784d4",
+    "valid_pdf": true
+  },
+  {
+    "id": "S03",
+    "filename": "S03_EN_Nazir_2024_AMAR_Effects of sample size on pedestrian crash risk estimation.pdf",
+    "doi": "10.1016/j.amar.2024.100353",
+    "source_url": "https://ndownloader.figshare.com/files/50180607",
+    "version": "publisher version via Loughborough repository",
+    "accessed": "2026-09-08",
+    "pages": 21,
+    "bytes": 9425862,
+    "sha256": "ed07f49f988b1fc668274e4edf6c4f1052d0cdd1798aa141c4a245c68fcda322",
+    "valid_pdf": true
+  },
+  {
+    "id": "S04",
+    "filename": "S04_EN_Huang_Chen_2025_TSR_Estimating intersections near-crash conflicts with drone data.pdf",
+    "doi": "10.55329/snjp4746",
+    "source_url": "https://tsr.international/TSR/article/download/26744/24104/73309",
+    "version": "publisher version",
+    "accessed": "2026-09-08",
+    "pages": 19,
+    "bytes": 2038482,
+    "sha256": "b7a4129056ab5bde0583f2507fbbb49ebb870c247ee222185bffe61fc97d689e",
+    "valid_pdf": true
+  },
+  {
+    "id": "S06",
+    "filename": "S06_EN_Steinmassl_2025_TSR_A framework for reliable traffic surrogate safety assessment.pdf",
+    "doi": "10.55329/vydx2624",
+    "source_url": "https://tsr.international/TSR/article/download/28152/24752/77861",
+    "version": "publisher version",
+    "accessed": "2026-09-08",
+    "pages": 29,
+    "bytes": 8528380,
+    "sha256": "4c2f54c5bb6ed5c1cc94480171169aa99082b192d23044006720a67c2c927424",
+    "valid_pdf": true
+  },
+  {
+    "id": "S07",
+    "filename": "S07_EN_Borsos_2020_AAP_Are collision and crossing course surrogate safety indicators transferable.pdf",
+    "doi": "10.1016/j.aap.2020.105517",
+    "source_url": "https://repository.tudelft.nl/file/File_d8a6c2a7-9e36-4731-b78f-4df5fbcf8bf6",
+    "version": "publisher version via TU Delft",
+    "accessed": "2026-09-08",
+    "pages": 11,
+    "bytes": 1451882,
+    "sha256": "6a3322d5d713fb5858f0f85f6942934eae3c35ed82e10d95b25b66e1ec953098",
+    "valid_pdf": true
+  }
+]
